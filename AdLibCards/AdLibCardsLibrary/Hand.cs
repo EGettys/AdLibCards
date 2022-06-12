@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace AdLibCardsLibrary
 {
-    public class Answer_Card : Card
+    public class Hand
     {
-        public Answer_Card(string card_text) : base(card_text)
-        { }
+        public List<Answer_Card> hand;
+        public Hand(List<Answer_Card> cards)
+        {
+            hand = cards;
+        }
     }
 }
