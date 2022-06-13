@@ -2,8 +2,9 @@ using AdLibCardsLibrary;
 namespace AdLibCardsTest
 {
     [TestClass]
-    public class AdlibCardsTest
+    public class CardTests
     {
+        //Question Card Tests
         [TestMethod]
         public void Question_Card_No_Blank()
         {

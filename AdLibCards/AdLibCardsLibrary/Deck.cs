@@ -20,7 +20,6 @@ namespace AdLibCardsLibrary
         {
             questions = question_cards;  
             answers = answer_cards;
-            
         }
 
         public void Shuffle(List<Card> cards)
@@ -42,11 +41,9 @@ namespace AdLibCardsLibrary
 
         public List<Answer_Card> DrwAnswers(int amount)
         {
-            var ACards = answers.GetRange(answers.Count - amount - 1, amount);
-            for (int i = 0; i < amount; i++)
-            {
-                answers.Remove(answers[^1]); // Remove Cards from Answer deck
-            }
+            var indexA = answers.Count - 1 - amount;
+            var ACards = answers.GetRange(indexA, amount);
+            answers.RemoveRange(indexA, amount); // Remove Cards from Answer deck
             //TODO: Shuffle discardA and append to answers
             return ACards;
         }
