@@ -13,5 +13,18 @@ namespace AdLibCardsLibrary
         {
             hand = cards;
         }
+        //public List<Answer_Card> playCards(int[] indices)
+        //{    hand.Remove() //remove card from hand
+            //discardA //add card to discard deck
+       // }
+        public void displayHand()
+        {
+            for (int i = 0; i < hand.Count; i++)
+            {
+                Console.WriteLine(i.ToString() + '.');
+                Card card = hand[i];
+                Console.Write(card);
+            }
+        }
     }
 }

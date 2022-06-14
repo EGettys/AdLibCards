@@ -23,7 +23,7 @@ namespace AdLibCardsLibrary
             "The past.",
             "Science.",
             "Passive-Aggressive\nPost-it notes.",
-            "A certain\nje ne sais quoi.", // TODO: should be partially italicized
+            "A certain\nje ne sais quoi.",
             "Jobs.",
             "A non-disclosure\nagreement.",
             "Active listening.",
@@ -49,25 +49,24 @@ namespace AdLibCardsLibrary
             "Coming to\nBroadway\nthis season,\n__:\nThe Musical.",
             "50% of all\nmarriages end in\n__.", "That’s right, I killed\n__.\nHow, you ask?\n__.",
             "My fellow\nAmericans: Before\nthis decade is\nout, we will have __\non the moon!",
-            "__ is a slippery slope\nthat leads to __."};
+            "__ is a slippery slope\nthat leads to __."
+        };
         static void Main()
         {
             List<Question_Card> questions1 = getQuestionCards((string[])question_strings);
-            List<Answer_Card> answers1 = getAnswerCards((string[]) answer_strings);
-            Deck Deck1 = new Deck(questions1, answers1);
-
+            List<Answer_Card> answers1 = getAnswerCards((string[])answer_strings);
+            Deck deck1 = new Deck(questions1, answers1);
         }
-        public List<Answer_Card> getAnswerCards(string[] answer_strings)
+        public static List<Answer_Card> getAnswerCards(string[] answer_strings)
         {
             List<Answer_Card> answers = new List<Answer_Card>();
             foreach (string answer_text in answer_strings)
             {
                 answers.Add(new Answer_Card(answer_text));
             }
-            return answers;   
-            
+            return answers;
         }
-        public List<Question_Card> getQuestionCards(string[] question_strings)
+        public static List<Question_Card> getQuestionCards(string[] question_strings)
         {
             List<Question_Card> questions = new List<Question_Card>();
             foreach (string question_text in question_strings)
@@ -76,7 +75,6 @@ namespace AdLibCardsLibrary
             }
             return questions;
         }
-
-
-
+        //public static void dispCard()
+    }
 }

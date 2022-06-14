@@ -12,6 +12,11 @@ namespace AdLibCardsLibrary
         {
             text = card_text;
         }
+
+        public void displayCard()
+        {
+            Console.Write(text);
+        }
     }
 
     public class Question_Card : Card

@@ -52,5 +52,14 @@ namespace AdLibCardsLibrary
         {
             return new Hand(DrwAnswers(size));
         }
+
+        public void DiscardAnswers(List<Answer_Card> cardsPlayed)
+        {
+            foreach (Answer_Card card in cardsPlayed)
+                {
+                    discardA.Add(card);
+                }
+        }
+
     }
 }
