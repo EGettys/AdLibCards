@@ -33,7 +33,8 @@ namespace AdLibCardsTest
         [TestMethod]
         public void GetHand5()
         {
-           // desk1.getHand()
+            Hand hand1 = deck1.GetHand(5);
+            hand1.displayHand();
             //Assert.AreEqual(new Answer_Card(Program.answer_strings[Program.answer_strings-1]))
         }
     }

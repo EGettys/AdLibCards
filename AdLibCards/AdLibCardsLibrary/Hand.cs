@@ -21,9 +21,10 @@ namespace AdLibCardsLibrary
         {
             for (int i = 0; i < hand.Count; i++)
             {
-                Console.WriteLine(i.ToString() + '.');
+                Console.Write(hand);
+                Console.Write(i.ToString() + ". ");
                 Card card = hand[i];
-                Console.Write(card);
+                Console.WriteLine(card.text);
             }
         }
     }
