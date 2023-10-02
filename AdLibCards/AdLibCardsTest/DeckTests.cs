@@ -34,8 +34,14 @@ namespace AdLibCardsTest
         public void GetHand5()
         {
             Hand hand1 = deck1.GetHand(5);
-            hand1.displayHand();
+            hand1.Display();
             //Assert.AreEqual(new Answer_Card(Program.answer_strings[Program.answer_strings-1]))
         }
+        [TestMethod]
+        public void DispDeck()
+        {
+            deck1.Display();
+        }
+
     }
 }

@@ -17,11 +17,11 @@ namespace AdLibCardsLibrary
         //{    hand.Remove() //remove card from hand
             //discardA //add card to discard deck
        // }
-        public void displayHand()
+        public void Display()
         {
+            Console.Write("Hand");
             for (int i = 0; i < hand.Count; i++)
             {
-                Console.Write(hand);
                 Console.Write(i.ToString() + ". ");
                 Card card = hand[i];
                 Console.WriteLine(card.text);

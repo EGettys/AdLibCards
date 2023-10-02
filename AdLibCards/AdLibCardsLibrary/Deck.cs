@@ -14,7 +14,7 @@ namespace AdLibCardsLibrary
         private List<Answer_Card> answers;
         public List<Answer_Card> discardA = new List<Answer_Card>();
 
-        //TODO: Consider if List is an efficient data structure to do this 
+        private Random rand = new Random();
 
         public Deck(List<Question_Card> question_cards, List<Answer_Card> answer_cards)
         {
@@ -22,18 +22,26 @@ namespace AdLibCardsLibrary
             answers = answer_cards;
         }
 
-        public void Shuffle(List<Card> cards)
+        public void Shuffle<T>(List<T> cards)
         {
+            // Fisher-Yates/Durstenfield Algorithm 
+            // https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
             for (int i = 0; i < (cards.Count - 1); i++)
             {
-                //TODO implement shuffle
+                int sIndex = rand.Next(i, cards.Count);
+                (cards[i], cards[sIndex]) = (cards[sIndex], cards[i]);//tuple swap
+                // reference https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/ide0180
             }
         }
 
         public Question_Card DrwQuestion()
         {
+            if(questions.Count < 1) { //Shuffle discard & append
+                Shuffle(discardQ);
+                questions.AddRange(discardQ);
+                discardQ.Clear();
+            }
             var QCard = questions[^1]; //Last Question_Card in List
-            //TODO: shuffle discardQ and append to questions
             questions.RemoveAt(questions.Count - 1);
             discardQ.Add(QCard);
             return QCard;
@@ -41,10 +49,16 @@ namespace AdLibCardsLibrary
 
         public List<Answer_Card> DrwAnswers(int amount)
         {
+            if (answers.Count < amount)
+            { //Shuffle discard & append
+                Shuffle(discardA);
+                answers.AddRange(discardA);
+                discardA.Clear();
+            }
             var indexA = answers.Count - 1 - amount;
             var ACards = answers.GetRange(indexA, amount);
             answers.RemoveRange(indexA, amount); // Remove Cards from Answer deck
-            //TODO: Shuffle discardA and append to answers
+            //TODO: card collection type to deduplicate between answer & question
             return ACards;
         }
 
@@ -61,5 +75,22 @@ namespace AdLibCardsLibrary
                 }
         }
 
+        public void Display()
+        {
+            Console.WriteLine("Question Cards");
+            for (int i = 0; i < questions.Count; i++)
+            {
+                Console.Write(i.ToString() + ". ");
+                Card card = questions[i];
+                Console.WriteLine(card.text);
+            }
+            Console.WriteLine("Answer Cards");
+            for (int j = 0; j < answers.Count; j++)
+            {
+                Console.Write(j.ToString() + ". ");
+                Card card = answers[j];
+                Console.WriteLine(card.text);
+            }
+        }
     }
 }
